@@ -5,6 +5,8 @@ import type {
   WeatherResponse,
 } from "@/types/weather";
 
+import { DateTime } from "luxon";
+
 const GEOCODING_API = "https://geocoding-api.open-meteo.com/v1/search";
 const WEATHER_API = "https://api.open-meteo.com/v1/forecast";
 
@@ -46,12 +48,14 @@ export const getWeather = async (
     hourly: "temperature_2m,weather_code,precipitation_probability",
     daily:
       "temperature_2m_max,temperature_2m_min,weather_code,precipitation_probability_max",
+      timezone: "auto"
   });
 
   const response = await fetch(`${WEATHER_API}?${params}`);
 
   const data = await response.json();
 
+  const currentTime = DateTime.fromISO(data.current.time, { zone: data.timezone }).toFormat("HH:mm");
   const current: WeatherData = {
     location: locationName,
     country: country,
@@ -61,10 +65,7 @@ export const getWeather = async (
     windSpeed: Math.round(data.current.wind_speed_10m),
     feelsLike: Math.round(data.current.apparent_temperature),
     weatherCode: data.current.weather_code,
-    time: new Date(data.current.time).toLocaleTimeString("es-ES", {
-      hour: "2-digit",
-      minute: "2-digit",
-    }),
+    time: currentTime
   };
 
   const now = new Date();
@@ -73,15 +74,18 @@ export const getWeather = async (
   const hourly: HourlyForecast[] = data.hourly.time
     .slice(0, 24)
     .map((time: string, index: number) => ({
-      time: new Date(time).toLocaleTimeString("es-ES", {
-        hour: "2-digit",
-        minute: "2-digit",
-      }),
+        time: new Date(time).toLocaleTimeString("es-ES", {
+          hour: "2-digit",
+          minute: "2-digit",
+          timeZone: data.timezone,
+        }),
       temperature: Math.round(data.hourly.temperature_2m[index]),
       weatherCode: data.hourly.weather_code[index],
       precipitation: data.hourly.precipitation_probability[index],
     }))
     .filter((_: unknown, index: number) => index >= currentHour);
+
+  console.log("hourly", hourly);
 
   const daily: DailyForecastT[] = data.daily.time.map(
     (date: string, index: number) => ({
