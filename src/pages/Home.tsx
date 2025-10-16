@@ -34,15 +34,16 @@ export default function Home() {
   };
 
   const handleGetCurrentLocation = async () => {
-
-
     setLoading(true);
     setError(null);
 
     try {
       const position = await getCurrentLocation();
 
-      if (position.coords.latitude == weather?.latitude && position.coords.longitude == weather?.longitude) {
+      if (
+        position.coords.latitude == weather?.latitude &&
+        position.coords.longitude == weather?.longitude
+      ) {
         setLoading(false);
         return;
       }
@@ -66,7 +67,6 @@ export default function Home() {
   };
 
   const handleGetSelectedLocation = (location: Location) => {
-    
     fetchWeatherData(
       location.latitude,
       location.longitude,
@@ -85,11 +85,11 @@ export default function Home() {
   );
 
   return (
-    <div className={weatherBackground}>
+    <div className={`min-h-screen ${weatherBackground} transition-all duration-1000 relative overflow-hidden`}>
       {weather && (
         <WeatherAnimations weatherCode={weather.current.weatherCode} />
       )}
-      <div className="w-full h-full flex flex-col items-center justify-center py-16 px-12 md:px-10">
+      <div className=" flex flex-col items-center justify-center py-16 px-12 md:px-10">
         <h1 className="text-5xl font-medium text-center text-white">
           Pronóstico del Tiempo
         </h1>

@@ -70,7 +70,7 @@ export const WeatherAnimations = ({ weatherCode }: WeatherAnimationsProps) => {
 
   if (weatherCode >= 1 && weatherCode <= 3) {
     return (
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden h-full">
         {[...Array(5)].map((_, i) => (
           <div
             key={i}

@@ -85,8 +85,6 @@ export const getWeather = async (
     }))
     .filter((_: unknown, index: number) => index >= currentHour);
 
-  console.log("hourly", hourly);
-
   const daily: DailyForecastT[] = data.daily.time.map(
     (date: string, index: number) => ({
       date: new Date(date),
