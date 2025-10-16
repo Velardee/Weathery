@@ -10,7 +10,7 @@ import { DateTime } from "luxon";
 const GEOCODING_API = "https://geocoding-api.open-meteo.com/v1/search";
 const WEATHER_API = "https://api.open-meteo.com/v1/forecast";
 
-export const getLocation = async (name: string): Promise<[]> => {
+export const getLocation = async (name: string): Promise<{ results: [] }> => {
   const response = await fetch(
     `${GEOCODING_API}?name=${encodeURIComponent(
       name
