@@ -81,13 +81,16 @@ export default function Home() {
   }, []);
 
   const weatherBackground = getBackgroundClass(
-    weather?.current.weatherCode || 0
+    weather?.current.weatherCode || 0,
+    weather?.current.time || ""
   );
 
   return (
-    <div className={`min-h-screen ${weatherBackground} transition-all duration-1000 relative overflow-hidden`}>
+    <div
+      className={`min-h-screen ${weatherBackground} transition-all duration-1000 relative overflow-hidden`}
+    >
       {weather && (
-        <WeatherAnimations weatherCode={weather.current.weatherCode} />
+        <WeatherAnimations weatherCode={weather.current.weatherCode} time={weather.current.time} />
       )}
       <div className=" flex flex-col items-center justify-center py-16 px-12 md:px-10">
         <h1 className="text-5xl font-medium text-center text-white">
@@ -108,7 +111,7 @@ export default function Home() {
               getSelectedLocation={handleGetSelectedLocation}
             />
             <CurrentWeather weather={weather?.current} />
-            <NextHours hourlyForecast={weather?.hourly} />
+            <NextHours hourlyForecast={weather?.hourly}/>
             <DailyForecast dailyForecast={weather?.daily} />
           </>
         )}

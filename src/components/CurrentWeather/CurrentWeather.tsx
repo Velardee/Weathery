@@ -34,10 +34,10 @@ const CurrentWeather: FunctionComponent<CurrentWeatherProps> = ({
             <MapPin color="white"/>
             <h2 className="text-3xl font-bold text-white">{location}</h2>
             </div>
-            <p className="text-base text-white text-center">{country}</p>
-            <p className="text-sm text-white/90 text-center">{time}</p>
+            <p className="text-base text-white text-center md:text-justify">{country}</p>
+            <p className="text-sm text-white/90 text-center md:text-justify">{time}</p>
           </div>
-          <WeatherIcon weatherCode={weatherCode} size={64} />
+          <WeatherIcon weatherCode={weatherCode} size={64} time={time} />
         </div>
 
         <div className="flex flex-col md:flex-row items-center gap-2 mt-8">

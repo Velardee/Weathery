@@ -16,7 +16,7 @@ const DailyForecast: FunctionComponent<DailyForecastProps> = ({
       {dailyForecast?.map((day, index) => (
         <div
           key={index}
-          className="w-full flex justify-between items-center bg-white/15 rounded-lg py-4 px-6 m-2"
+          className="w-full flex justify-between items-center bg-white/15 rounded-lg py-4 px-6 mb-3"
         >
           <h3 className="capitalize text-lg font-medium text-white">
             {dailyDateLabel(day.date)}

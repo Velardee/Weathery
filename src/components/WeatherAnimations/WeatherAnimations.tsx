@@ -1,12 +1,24 @@
+import { isSunOut } from "@/utils/background";
+
 interface WeatherAnimationsProps {
   weatherCode: number;
+  time: string;
 }
 
-export const WeatherAnimations = ({ weatherCode }: WeatherAnimationsProps) => {
+export const WeatherAnimations = ({ weatherCode, time }: WeatherAnimationsProps) => {
+
+  const isDay = isSunOut(time);
+
   if (weatherCode === 0) {
     return (
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="sun-rays"></div>
+       {
+        isDay ? (
+           <div className="sun-rays"></div>
+        ) : (
+           <div className="moon"></div>
+        )
+       }
       </div>
     );
   }

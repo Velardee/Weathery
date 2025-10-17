@@ -24,7 +24,7 @@ const NextHours: FunctionComponent<NextHoursProps> = ({ hourlyForecast }) => {
                 className="flex-1 flex flex-col gap-2 justify-center items-center bg-white/15 rounded-lg py-4 px-6 m-1"
               >
                 <span className="text-white/90">{hour.time}</span>
-                <WeatherIcon weatherCode={hour.weatherCode} size={32} />
+                <WeatherIcon weatherCode={hour.weatherCode} size={32} time={hour.time} />
                 <span className="text-white text-xl font-medium">{hour.temperature}°</span>
                 <div className="flex gap-1 items-center">
                   <Droplets color="white" size={20} strokeWidth="1"/>
