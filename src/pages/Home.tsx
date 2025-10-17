@@ -96,7 +96,7 @@ export default function Home() {
         {loading && (
           <div className="flex flex-col justify-center items-center gap-3 h-[70vh]">
             <LoadingSpinner width={50} height={50} />
-            <p className="text-2xl text-white">
+            <p className="text-2xl text-white text-center">
               Cargando información del clima...
             </p>
           </div>
