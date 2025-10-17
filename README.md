@@ -1,73 +1,67 @@
-# React + TypeScript + Vite
+🌦️ Weather App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Una aplicación moderna y ligera para consultar el clima actual y el pronóstico de cualquier ciudad del mundo, desarrollada con React, TypeScript, Vite y TailwindCSS.
+La app obtiene datos en tiempo real desde la API de Open-Meteo y muestra información precisa de temperatura, humedad, sensación térmica, velocidad del viento y más.
 
-Currently, two official plugins are available:
+✨ Características
+🌍 Búsqueda de ciudades por nombre
+☀️ Clima actual con temperatura real y aparente
+🕒 Conversión automática de zona horaria con Luxon
+💧 Humedad, velocidad del viento y condiciones del clima
+📅 Pronóstico diario y horario
+💡 Interfaz moderna y responsive con TailwindCSS
+⚡ Desarrollada con Vite para un rendimiento superior
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🛠️ Tecnologías
+React 19
+Vite
+TypeScript
+TailwindCSS 4
+Luxon
+Open-Meteo API
+Lucide React
+🚀 Instalación y uso
 
-## React Compiler
+Clona el repositorio:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+git clone https://github.com/tuusuario/weather-app.git
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Entra al directorio:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+cd weather-app
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Instala las dependencias:
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+npm install
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Inicia el servidor de desarrollo:
+
+npm run dev
+
+
+Abre la app en tu navegador:
+
+http://localhost:5173
+
+
+📁 Estructura del proyecto
+src/
+ ├─ components/       # Componentes reutilizables de UI
+ ├─ hooks/            # Hooks personalizados
+ ├─ utils/            # Funciones auxiliares (ej. formateo de tiempo)
+ ├─ assets/           # Iconos e imágenes
+ ├─ App.tsx           # Componente principal
+ └─ main.tsx          # Punto de entrada
+
+🧠 Aprendizajes / Enfoque técnico
+
+
+Este proyecto se centra en:
+
+Manejo de datos asíncronos desde APIs públicas
+Control de zonas horarias usando Luxon
+Diseño responsive con utilidades de Tailwind
+Arquitectura limpia y componentes reutilizables en React
